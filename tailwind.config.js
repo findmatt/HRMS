@@ -8,5 +8,16 @@ module.exports = {
     variants: {
         extend: {},
     },
-    plugins: [],
+    // eslint-disable-next-line global-require
+    plugins: [require('daisyui')],
+
+    // config
+    daisyui: {
+        styled: true,
+        themes: false,
+        resets: true,
+        utils: true,
+        logs: true,
+        rtl: false,
+    },
 };

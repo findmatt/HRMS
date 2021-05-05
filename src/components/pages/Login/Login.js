@@ -14,10 +14,14 @@ export default function Login() {
 
     const handleLogin = (evt) => {
         evt.preventDefault();
-        auth()
-            .signInWithEmailAndPassword(email, password)
-            .then((result) => console.log(result))
-            .catch((err) => console.log(err));
+        auth.signInWithEmailAndPassword(email, password)
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((err) => {
+                console.log(err);
+                auth.signOut();
+            });
     };
 
     return (

@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
+import UserProvider from './context/AuthContext';
 import Login from './components/pages/Login/Login';
+// import Members from './components/pages/Members/Members';
 
 function App() {
-    // const [token, setToken] = useState();
-    const [auth, setAuth] = useState();
-    if (!auth) {
-        return <Login setAuth={setAuth} />;
-    }
     return (
         <div className="wrapper">
-            <h1>Application</h1>
             <BrowserRouter>
-                <Switch>
-                    <Route path="/login">
-                        <Login />
-                    </Route>
-                </Switch>
+                <UserProvider>
+                    <Switch>
+                        <Route path="/login">
+                            <Login />
+                        </Route>
+                        {/* <Route path="/members">
+                        <Members />
+                    </Route> */}
+                    </Switch>
+                </UserProvider>
             </BrowserRouter>
         </div>
     );
 }
+
+export const AuthContext = React.createContext();
 
 export default App;

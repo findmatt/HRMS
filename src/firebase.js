@@ -10,10 +10,10 @@ const firebaseConfig = {
     messagingSenderId: '902194713279',
     appId: '1:902194713279:web:74bf758fa2f49295222c0a',
 };
-firebase.initializeApp(firebaseConfig);
+const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-const db = firebase.firestore();
-const { auth } = firebase;
+const auth = firebaseApp.auth();
+const db = firebaseApp.firestore();
 
 // eslint-disable-next-line no-restricted-globals
 // if (location.hostname === 'localhost') {
@@ -21,5 +21,5 @@ const { auth } = firebase;
 //     auth().useEmulator('http://localhost:9099/', { disableWarnings: true });
 // }
 
-export default firebase;
+export default firebaseApp;
 export { db, auth };

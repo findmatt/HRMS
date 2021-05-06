@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { auth } from '../../../firebase';
+
+import { AuthContext } from '../../../context/AuthContext';
 import './Login.css';
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    // eslint-disable-next-line no-unused-vars
+    const authContext = useContext(AuthContext);
     const scripture = {
         text: `"But to each one of us grace has been given as Christ
         apportioned it."`,
         verse: `Ephesians 4:7`,
     };
-
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     const handleLogin = (evt) => {
         evt.preventDefault();
@@ -18,10 +22,7 @@ export default function Login() {
             .then((result) => {
                 console.log(result);
             })
-            .catch((err) => {
-                console.log(err);
-                auth.signOut();
-            });
+            .catch(() => {});
     };
 
     return (
@@ -73,7 +74,11 @@ export default function Login() {
                             </label>
                         </div>
                         <div className="form-control mt-6">
-                            <input type="submit" className="btn btn-primary" />
+                            <input
+                                type="submit"
+                                value="Login"
+                                className="btn btn-primary"
+                            />
                         </div>
                     </form>
                 </div>

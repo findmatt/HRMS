@@ -1,10 +1,9 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { Redirect } from 'react-router-dom';
 
 import { auth } from '../firebase';
 
-const [user, setUser] = useState('');
-const useFirebaseAuth = () => {
+const createFirebaseAPI = () => {
+    const [user, setUser] = useState('');
     const handleAuthResult = async (authResult) => {
         let formattedUser = null;
         if (authResult) {
@@ -18,10 +17,14 @@ const useFirebaseAuth = () => {
         }
         setUser(formattedUser);
     };
-    const signOut = () =>
+    const login = (email, password) => {
+        auth.signInWithEmailAndPassword(email, password).catch((err) => {
+            console.log(err);
+        });
+    };
+    const logout = () =>
         auth.signOut().then(() => {
             handleAuthResult(null);
-            return <Redirect to="/" />;
         });
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(handleAuthResult);
@@ -29,20 +32,21 @@ const useFirebaseAuth = () => {
         return unsubscribe;
     }, []);
 
-    return { user, signOut };
+    return { user, logout, login };
 };
 
-const AuthContext = createContext(user);
+const firebaseAPIContext = createContext();
 
 const AuthProvider = (props) => {
     // eslint-disable-next-line react/prop-types
     const { children } = props;
-    const firebaseAuth = useFirebaseAuth();
+    const authAPI = createFirebaseAPI();
     return (
-        <AuthContext.Provider value={firebaseAuth}>
+        <firebaseAPIContext.Provider value={authAPI}>
             {children}
-        </AuthContext.Provider>
+        </firebaseAPIContext.Provider>
     );
 };
 
-export { AuthProvider, AuthContext };
+export default firebaseAPIContext;
+export { AuthProvider };

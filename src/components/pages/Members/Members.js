@@ -1,10 +1,10 @@
-import React from 'react';
-import { AuthContext } from '../../../context/AuthContext';
+import React, { useContext } from 'react';
+import firebaseAPIContext from '../../../context/AuthContext';
 
 export default function Members() {
+    const { logout } = useContext(firebaseAPIContext);
     const handleLogout = () => {
-        const { signOut } = AuthContext;
-        signOut();
+        logout();
     };
 
     return (

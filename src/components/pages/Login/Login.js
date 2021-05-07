@@ -1,28 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { auth } from '../../../firebase';
-
-import { AuthContext } from '../../../context/AuthContext';
-import './Login.css';
+import React, { useContext, useState } from 'react';
+import firebaseAPIContext from '../../../context/AuthContext';
 
 export default function Login() {
+    const { login } = useContext(firebaseAPIContext);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    // eslint-disable-next-line no-unused-vars
-    const authContext = useContext(AuthContext);
+    const handleLogin = (evt) => {
+        evt.preventDefault();
+        login(email, password);
+    };
     const scripture = {
         text: `"But to each one of us grace has been given as Christ
         apportioned it."`,
         verse: `Ephesians 4:7`,
-    };
-
-    const handleLogin = (evt) => {
-        evt.preventDefault();
-        auth.signInWithEmailAndPassword(email, password)
-            .then((result) => {
-                console.log(result);
-            })
-            .catch(() => {});
     };
 
     return (

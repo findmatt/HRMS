@@ -20,4 +20,7 @@ rules:
             ['error', { 'required': { 'some': ['nesting', 'id'] } }],
         'jsx-a11y/label-has-for':
             ['error', { 'required': { 'some': ['nesting', 'id'] } }],
+        'react/jsx-props-no-spreading': 0,
+        'react/require-default-props': 0,
+        'no-unused-vars': 1,
     }

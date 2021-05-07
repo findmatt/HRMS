@@ -7,7 +7,7 @@ import firebaseAPIContext from '../context/AuthContext';
 export default () => {
     const authAPI = useContext(firebaseAPIContext);
     if (authAPI.user) {
-        return <Redirect to="/members" />;
+        return <Redirect to="/" />;
     }
-    return <Route exact path="/" component={Login} />;
+    return <Route exact path="/login" component={Login} />;
 };

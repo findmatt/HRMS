@@ -9,12 +9,12 @@ export default function Members() {
 
     return (
         <div className="card-body">
-            <span>test</span>
+            {/* <span>test</span>
             <form>
                 <button type="button" onClick={handleLogout}>
                     Logout
                 </button>
-            </form>
+            </form> */}
         </div>
     );
 }

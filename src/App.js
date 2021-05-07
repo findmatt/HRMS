@@ -7,7 +7,7 @@ import ProtectedRoute from './routes/ProtectedRoute';
 import PublicRoute from './routes/PublicRoute';
 
 import Members from './components/pages/Members/Members';
-import Navbar from './components/Navbar/Navbar';
+import Drawer from './components/Drawer/Drawer';
 
 function App() {
     // eslint-disable-next-line no-unused-vars
@@ -16,13 +16,8 @@ function App() {
             <BrowserRouter>
                 <AuthProvider>
                     <Switch>
-                        <Route exact path="/Navbar" component={Navbar} />
-                        <ProtectedRoute
-                            exact
-                            path="/members"
-                            // temporary landing page untill use case requires dashboard
-                            component={Members}
-                        />
+                        {/* temporary landing page untill use case requires dashboard */}
+                        <ProtectedRoute exact path="/" component={Members} />
                         <PublicRoute />
                     </Switch>
                 </AuthProvider>

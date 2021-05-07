@@ -1,10 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Drawer from '../Drawer/Drawer';
+
 function Navbar(props) {
     const { children } = props;
     return (
-        <div className="lg:container lg:pt-6 mx-auto ">
+        <div className="lg:container lg:pt-6 mx-auto">
             <div className="navbar mb-2 shadow-lg bg-neutral text-neutral-content lg:rounded-box ">
                 <button type="button" className="btn btn-square btn-ghost">
                     <svg
@@ -25,6 +27,7 @@ function Navbar(props) {
                     <span className="text-lg font-bold">Grace Church</span>
                 </div>
             </div>
+            <Drawer show="True" />
             {children}
         </div>
     );

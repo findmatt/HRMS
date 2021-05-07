@@ -16,7 +16,7 @@ function ProtectedRoute({ component: Component, ...rest }) {
                         <Component {...rest} {...props} />
                     </Navbar>
                 ) : (
-                    <Redirect to="/" />
+                    <Redirect to="/login" />
                 )
             }
         />

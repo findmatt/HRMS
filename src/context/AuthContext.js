@@ -23,9 +23,14 @@ const createFirebaseAPI = () => {
         });
     };
     const logout = () =>
-        auth.signOut().then(() => {
-            handleAuthResult(null);
-        });
+        auth
+            .signOut()
+            .then(() => {
+                handleAuthResult(null);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(handleAuthResult);
 

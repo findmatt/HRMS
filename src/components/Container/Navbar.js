@@ -36,7 +36,7 @@ function Navbar(props) {
                     icon: 'BiLogOut',
                     text: 'Sign Out',
                     linkto: '/',
-                    onClick: authAPI.logout,
+                    handleClick: authAPI.logout,
                 },
             ],
         },

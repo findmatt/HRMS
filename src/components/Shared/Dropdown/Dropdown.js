@@ -17,6 +17,36 @@ function Dropdown(props) {
         }
     };
 
+    const mapMenuGroupItems = (menuItems, groupKey) =>
+        menuItems.map((item, i) => {
+            const optionKey = `${groupKey}${i}`;
+            return (
+                <li key={optionKey}>
+                    <Link
+                        to="/"
+                        onClick={item.handleClick}
+                        className="flex justify-left"
+                    >
+                        <Icon id={item.icon} />
+                        <div className="px-2">{item.text}</div>
+                    </Link>
+                </li>
+            );
+        });
+
+    const mapMenu = (menuGroups) =>
+        menuGroups.map((group, i) => {
+            const groupKey = i;
+            return (
+                <div key={groupKey}>
+                    <li key={groupKey} className="menu-title">
+                        <span>{group.title}</span>
+                    </li>
+                    {mapMenuGroupItems(group.menuItems, groupKey)}
+                </div>
+            );
+        });
+
     useEffect(() => {
         document.addEventListener('click', handleClickOutside, true);
         return () => {
@@ -37,33 +67,7 @@ function Dropdown(props) {
                     ref={dropdownRef}
                     className="menu p-4 shadow-lg bg-base-100 bg-neutral-focus rounded-box absolute w-max float-none right-0 z-2"
                 >
-                    {menu.map((menuGroup, i) => {
-                        const groupKey = i;
-                        return (
-                            <div key={groupKey}>
-                                <li key={groupKey} className="menu-title">
-                                    <span>{menuGroup.title}</span>
-                                </li>
-                                {menuGroup.menuItems.map((item, j) => {
-                                    const optionKey = `${groupKey}${j}`;
-                                    return (
-                                        <li key={optionKey}>
-                                            <Link
-                                                to="/"
-                                                onClick={item.handleClick}
-                                                className="flex justify-left"
-                                            >
-                                                <Icon id={item.icon} />
-                                                <div className="px-2">
-                                                    {item.text}
-                                                </div>
-                                            </Link>
-                                        </li>
-                                    );
-                                })}
-                            </div>
-                        );
-                    })}
+                    {mapMenu(menu)}
                 </ul>
             )}
         </div>

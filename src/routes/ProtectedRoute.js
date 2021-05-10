@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import firebaseAPIContext from '../context/AuthContext';
-import Navbar from '../components/Navbar/Navbar';
+import Navbar from '../components/Container/Navbar';
 
 function ProtectedRoute({ component: Component, ...rest }) {
     const authAPI = useContext(firebaseAPIContext);

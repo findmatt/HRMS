@@ -1,20 +1,48 @@
-import React, { useContext } from 'react';
-import firebaseAPIContext from '../../../context/AuthContext';
+import React from 'react';
+import ProfileCard from './ProfileCard/ProfileCard';
 
 export default function Members() {
-    const { logout } = useContext(firebaseAPIContext);
-    const handleLogout = () => {
-        logout();
-    };
-
     return (
-        <div className="card-body">
-            {/* <span>test</span>
-            <form>
-                <button type="button" onClick={handleLogout}>
-                    Logout
-                </button>
-            </form> */}
+        <div className="card shadow-lg bg-base-200">
+            <div className="card-body">
+                <h2 className="card-title">Member List</h2>
+                <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                    <ProfileCard />
+                </div>
+            </div>
         </div>
     );
 }

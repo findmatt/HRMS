@@ -51,7 +51,7 @@ function Dropdown(props) {
         ));
 
     return (
-        <div ref={dropdownRef} className="relative">
+        <div ref={dropdownRef} className="relative z-20">
             <button
                 type="button"
                 className="btn btn-ghost rounded-btn text-neutral-content"
@@ -64,7 +64,7 @@ function Dropdown(props) {
                     className="menu p-4 w-max 
                             shadow-lg bg-base-100 bg-neutral-focus rounded-box 
                             text-neutral-focus
-                            absolute float-left right-0"
+                            absolute right-0"
                 >
                     {mapMenu(menu)}
                 </ul>

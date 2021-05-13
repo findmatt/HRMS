@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AiOutlineMenu, AiFillAlert } from 'react-icons/ai';
+import { SiGooglemaps } from 'react-icons/si';
 import { BsSearch } from 'react-icons/bs';
 import { BiLogOut, BiNews, BiChalkboard } from 'react-icons/bi';
 import { FaCross } from 'react-icons/fa';
+import { TiPhoneOutline } from 'react-icons/ti';
 
 function Icon(props) {
     const { id } = props;
@@ -22,6 +24,10 @@ function Icon(props) {
             return <BiChalkboard className="text-xl" />;
         case 'FaCross':
             return <FaCross className="text-xl" />;
+        case 'SiGooglemaps':
+            return <SiGooglemaps className="text-xl" />;
+        case 'TiPhoneOutline':
+            return <TiPhoneOutline className="text-xl" />;
         default:
             return <span />;
     }

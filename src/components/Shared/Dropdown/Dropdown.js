@@ -75,7 +75,7 @@ function Dropdown(props) {
 
 Dropdown.propTypes = {
     menu: PropTypes.arrayOf(PropTypes.object),
-    toggleIcon: PropTypes.arrayOf(PropTypes.string),
+    toggleIcon: PropTypes.string,
 };
 
 export default Dropdown;

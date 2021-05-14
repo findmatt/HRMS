@@ -3,7 +3,7 @@ import Icon from '../../../Shared/Icon/Icon';
 
 function ProfileCard() {
     return (
-        <div className="card shadow-lg side compact bg-base-100">
+        <div className="card shadow-lg side compact bg-base-100 w-80 place-self-center">
             <div className="flex-row flex-wrap flex-1 items-center space-x-4 card-body">
                 <div className="flex-row flex-shrink-0 items-center space-x-4 card-body">
                     <img
@@ -18,10 +18,10 @@ function ProfileCard() {
                         </p>
                     </div>
                 </div>
-                <div className="flex-row items-center space-x-4 justify-right text-primary">
+                <div className="flex-row items-center space-x-4 text-primary">
                     <button
                         type="button"
-                        className="btn btn-ghost shadow-lg btn-square btn-md border-gray-100"
+                        className="btn btn-ghost shadow-lg btn-square btn-md border-gray-100 "
                     >
                         <Icon id="SiGooglemaps" />
                     </button>

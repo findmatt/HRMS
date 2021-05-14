@@ -42,28 +42,11 @@ function Navbar(props) {
         },
     ];
     return (
-        <div className="lg:container lg:pt-6 mx-auto">
-            <div
-                // className="navbar mb-2 shadow-lg bg-neutral-focus lg:rounded-box text-neutral-content
-                //             flex flex-1 justify-between flex-grow"
-                className="navbar mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box"
-            >
+        <div className="lg:container lg:pt-6 mx-auto ">
+            <div className="navbar mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box justify-between">
                 <span className="flex-none px-2 mx-2 text-lg font-bold">
                     Grace
                 </span>
-                <form className="flex-1">
-                    <input
-                        type="text"
-                        placeholder="Search Members"
-                        className="input input-ghost input-group sm:flex-grow"
-                    />
-                    <button
-                        type="button"
-                        className="btn btn-square btn-ghost input-group-append"
-                    >
-                        <Icon id="FaSearch" />
-                    </button>
-                </form>
                 <div>
                     <Dropdown menu={menu} toggleIcon="FaBar" />
                 </div>

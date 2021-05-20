@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import Dropdown from '../Shared/Dropdown/Dropdown';
-import Icon from '../Shared/Icon/Icon';
 import AuthContext from '../../context/AuthContext';
 
 function Navbar(props) {

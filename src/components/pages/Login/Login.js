@@ -24,7 +24,7 @@ export default function Login() {
                     <p className="mb-5">{scripture.text}</p>
                     <p className="mb-5">{scripture.verse}</p>
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-sm shadow-lg bg-base-100">
                     <form className="card-body" onSubmit={handleLogin}>
                         <div className="form-control">
                             <label className="label" htmlFor="inputEmail">

@@ -10,6 +10,7 @@
         "axios": "^0.21.1",
         "craco": "^0.0.3",
         "daisyui": "^0.21.3",
+        "date-fns": "^2.21.3",
         "firebase": "^8.4.3",
         "postcss": "7",
         "prop-types": "^15.7.2",

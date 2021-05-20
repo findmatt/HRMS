@@ -8,31 +8,33 @@ import { FaCross } from 'react-icons/fa';
 import { TiPhoneOutline } from 'react-icons/ti';
 
 function Icon(props) {
-    const { id } = props;
+    const { id, textSize } = props;
+    const iconSize = textSize || 'text-base';
     switch (id) {
         case 'FaSearch':
-            return <BsSearch className="text-xl" />;
+            return <BsSearch className={iconSize} />;
         case 'FaBar':
-            return <AiOutlineMenu className="text-xl" />;
+            return <AiOutlineMenu className={iconSize} />;
         case 'BiLogOut':
-            return <BiLogOut className="text-xl" />;
+            return <BiLogOut className={iconSize} />;
         case 'AiFillAlert':
-            return <AiFillAlert className="text-xl" />;
+            return <AiFillAlert className={iconSize} />;
         case 'BiNews':
-            return <BiNews className="text-xl" />;
+            return <BiNews className={iconSize} />;
         case 'BiChalkboard':
-            return <BiChalkboard className="text-xl" />;
+            return <BiChalkboard className={iconSize} />;
         case 'FaCross':
-            return <FaCross className="text-xl" />;
+            return <FaCross className={iconSize} />;
         case 'SiGooglemaps':
-            return <SiGooglemaps className="text-xl" />;
+            return <SiGooglemaps className={iconSize} />;
         case 'TiPhoneOutline':
-            return <TiPhoneOutline className="text-xl" />;
+            return <TiPhoneOutline className={iconSize} />;
         default:
             return <span />;
     }
 }
 Icon.propTypes = {
     id: PropTypes.string,
+    textSize: PropTypes.string,
 };
 export default Icon;

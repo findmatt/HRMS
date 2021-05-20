@@ -7,7 +7,7 @@ function Dropdown(props) {
     const { menu, toggleIcon } = props;
     const [visible, setVisible] = useState(false);
 
-    const handleClick = (evt) => {
+    const handleClick = () => {
         setVisible(!visible);
     };
 
@@ -34,7 +34,7 @@ function Dropdown(props) {
                     onClick={item.handleClick}
                     className="flex justify-left "
                 >
-                    <Icon id={item.icon} />
+                    <Icon id={item.icon} textSize="text-xl" />
                     <div className="px-2">{item.text}</div>
                 </Link>
             </li>
@@ -57,7 +57,7 @@ function Dropdown(props) {
                 className="btn btn-ghost rounded-btn text-neutral-content"
                 onClick={handleClick}
             >
-                <Icon id={toggleIcon} />
+                <Icon id={toggleIcon} textSize="text-xl" />
             </button>
             {visible && (
                 <ul

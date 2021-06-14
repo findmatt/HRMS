@@ -42,7 +42,7 @@ function Navbar(props) {
     ];
     return (
         <div className="lg:container lg:pt-6 mx-auto ">
-            <div className="navbar mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box justify-between">
+            <div className="navbar sticky top-0 z-10 mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box justify-between">
                 <span className="flex-none px-2 mx-2 text-lg font-bold">
                     Grace
                 </span>

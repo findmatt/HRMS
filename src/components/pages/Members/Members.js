@@ -30,15 +30,14 @@ export default function Members() {
     };
     const members = [matthew, yunsen];
     return (
-        <div className="card shadow-lg bg-base-100">
-            <div className="card shadow-lg bg-base-100 rounded-b-none">
-                <div className="card-body ">
-                    <h2 className="card-title">Member List</h2>
-                    <form className="flex flex-1 pb-4 lg:w-9/12 md:w-9/12 sm:w-max place-self-center">
+        <div className="space-y-2.5 m-4">
+            <div className="card shadow-md bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200">
+                <div className="m-4">
+                    <form className="flex">
                         <input
                             type="text"
                             placeholder="Search Members"
-                            className="input input-bordered input-group sm:flex-grow"
+                            className="input input-bordered input-group flex-grow flex flex-1"
                         />
                         <button
                             type="button"
@@ -49,11 +48,13 @@ export default function Members() {
                     </form>
                 </div>
             </div>
-            <div className="card-body">
-                <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
-                    {members.map((member) => (
-                        <ProfileCard info={member} />
-                    ))}
+            <div className=" card shadow-md bg-base-100 backdrop-filter backdrop-blur-lg bg-opacity-30 border-b border-gray-200 h-auto ">
+                <div className="card-body h-auto">
+                    <div className="grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 ">
+                        {members.map((member) => (
+                            <ProfileCard info={member} />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

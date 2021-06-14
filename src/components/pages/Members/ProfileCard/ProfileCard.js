@@ -53,11 +53,6 @@ function ProfileCard(props) {
                     </button>
                 </div>
             </div>
-            {/* <div className="card-body -m-5">
-                <button type="button" className="btn btn-neutral">
-                    more info{' '}
-                </button>
-            </div> */}
         </div>
     );
 }

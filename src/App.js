@@ -1,26 +1,37 @@
 import React from 'react';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { Switch, useLocation } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+
 import './App.css';
 
 import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './routes/ProtectedRoute';
 import PublicRoute from './routes/PublicRoute';
 
-import Members from './components/pages/Members/Members';
+import Members from './components/Pages/Members/Members';
+import MemberDetails from './components/Pages/MemberDetails/MemberDetails';
 
 function App() {
-    // eslint-disable-next-line no-unused-vars
+    const location = useLocation();
+    const background = location.state && location.state.background;
     return (
         <div className="wrapper">
-            <BrowserRouter>
-                <AuthProvider>
-                    <Switch>
-                        {/* temporary landing page untill use case requires dashboard */}
-                        <ProtectedRoute exact path="/" component={Members} />
-                        <PublicRoute />
-                    </Switch>
-                </AuthProvider>
-            </BrowserRouter>
+            <AuthProvider>
+                <Switch location={background || location}>
+                    {/* temporary landing page untill use case requires dashboard */}
+                    <ProtectedRoute exact path="/" component={Members} />
+                    <PublicRoute />
+                </Switch>
+                {background && (
+                    <ProtectedRoute
+                        exact
+                        path="/MemberDetails/:id"
+                        component={MemberDetails}
+                        navBar={false}
+                    />
+                )}
+            </AuthProvider>
+            <Toaster position="bottom-center" />
         </div>
     );
 }

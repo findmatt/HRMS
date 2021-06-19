@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
 
 import Dropdown from '../Shared/Dropdown/Dropdown';
 import AuthContext from '../../context/AuthContext';
 
-function Navbar(props) {
-    const { children } = props;
+function Navbar() {
     const authAPI = useContext(AuthContext);
     const menu = [
         {
@@ -41,20 +39,12 @@ function Navbar(props) {
         },
     ];
     return (
-        <div className="lg:container lg:pt-6 mx-auto ">
-            <div className="navbar sticky top-0 z-10 mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box justify-between">
-                <span className="flex-none px-2 mx-2 text-lg font-bold">
-                    Grace
-                </span>
-                <div>
-                    <Dropdown menu={menu} toggleIcon="FaBar" />
-                </div>
+        <div className="navbar sticky top-0 z-10 mb-2 shadow-lg bg-neutral-focus text-neutral-content lg:rounded-box justify-between">
+            <span className="flex-none px-2 mx-2 text-lg font-bold">Grace</span>
+            <div>
+                <Dropdown menu={menu} toggleIcon="FaBar" />
             </div>
-            {children}
         </div>
     );
 }
-Navbar.propTypes = {
-    children: PropTypes.node,
-};
 export default Navbar;

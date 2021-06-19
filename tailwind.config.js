@@ -6,10 +6,12 @@ module.exports = {
         extend: {},
     },
     variants: {
-        extend: {},
+        extend: {
+            transform: ['hover'],
+        },
     },
     // eslint-disable-next-line global-require
-    plugins: [require('daisyui')],
+    plugins: [require('daisyui'), require('tailwindcss-neumorphism')],
 
     // config
     daisyui: {

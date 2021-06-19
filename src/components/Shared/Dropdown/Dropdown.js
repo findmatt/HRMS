@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 import Icon from '../Icon/Icon';
 
 function Dropdown(props) {
@@ -42,8 +43,8 @@ function Dropdown(props) {
 
     const mapMenu = (menuGroups) =>
         menuGroups.map((group) => (
-            <div>
-                <li key={group.title} className="menu-title">
+            <div key={group.title}>
+                <li className="menu-title">
                     <span>{group.title}</span>
                 </li>
                 {mapMenuGroupItems(group.menuItems)}
@@ -62,7 +63,7 @@ function Dropdown(props) {
             {visible && (
                 <ul
                     className="menu p-4 w-max 
-                            shadow-lg bg-base-100 bg-neutral-focus rounded-box 
+                            shadow-lg bg-base-100  rounded-box 
                             text-neutral-focus
                             absolute right-0"
                 >

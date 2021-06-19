@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+.neumorph {
+  box-shadow: 6px 6px 8px 0 rgba(0, 0, 0, 0.2), -4px -4px 6px 0 rgba(255, 255, 255, 0.4);
+}
+
+.convex {
+  background: linear-gradient(-45,rgba(0,0,0,0.2),rgba(255,255,255));
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

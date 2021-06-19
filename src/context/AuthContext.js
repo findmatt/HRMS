@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
+import toast from 'react-hot-toast';
 
 import { auth } from '../firebase';
 
@@ -19,7 +20,7 @@ const createFirebaseAPI = () => {
     };
     const login = (email, password) => {
         auth.signInWithEmailAndPassword(email, password).catch((err) => {
-            console.log(err);
+            toast.error(err.message);
         });
     };
     const logout = () =>
@@ -29,7 +30,7 @@ const createFirebaseAPI = () => {
                 handleAuthResult(null);
             })
             .catch((err) => {
-                console.log(err);
+                toast.error(err.message);
             });
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(handleAuthResult);

@@ -6,22 +6,23 @@ import backgroundImg from '../background.jpg';
 import firebaseAPIContext from '../context/AuthContext';
 import Navbar from '../components/Container/Navbar';
 
-function ProtectedRoute({ component: Component, ...rest }) {
+function ProtectedRoute({ component: Component, navBar, ...rest }) {
     const authAPI = useContext(firebaseAPIContext);
     return (
         <Route
             {...rest}
-            render={(props) =>
+            render={() =>
                 authAPI.user ? (
                     <div
-                        className="min-h-screen bg-cover  backdrop-blur-lg bg-opacity-50"
+                        className="min-h-screen bg-cover bg-center "
                         style={{
                             backgroundImage: `url(${backgroundImg})`,
                         }}
                     >
-                        <Navbar>
-                            <Component {...rest} {...props} />
-                        </Navbar>
+                        <div className="lg:container lg:pt-6 pb-6 mx-auto ">
+                            {navBar ? <Navbar /> : ''}
+                            <Component />
+                        </div>
                     </div>
                 ) : (
                     <Redirect to="/login" />
@@ -32,7 +33,12 @@ function ProtectedRoute({ component: Component, ...rest }) {
 }
 
 ProtectedRoute.propTypes = {
-    component: PropTypes.node,
+    component: PropTypes.func,
+    navBar: PropTypes.bool,
+};
+
+ProtectedRoute.defaultProps = {
+    navBar: true,
 };
 
 export default ProtectedRoute;

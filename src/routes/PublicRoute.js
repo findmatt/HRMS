@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import Login from '../components/pages/Login/Login';
+import Login from '../components/Pages/Login/Login';
 import firebaseAPIContext from '../context/AuthContext';
 
 export default () => {

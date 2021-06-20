@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React from 'react';
+import React, { useState } from 'react';
 // import { useParams } from 'react-router-dom';
 import Modal from '../../Shared/Modal/Modal';
 import MemberDetailsSection from './MemberDetailsSection';
 import ProfileHeader from '../Members/ProfileCard/ProfileHeader';
 import Divider from '../../Shared/Divider/Divider';
+import MemberNotes from './MemberNotes';
 
 function MemberDetails() {
     // const { id } = useParams();
@@ -31,7 +32,13 @@ function MemberDetails() {
         phone: '',
         email: 'test@gracechurchsg.com',
     };
-    const keyToLabelSeqGeneral = [
+
+    const notes = [
+        'Stays with his father, not yet a christian',
+        'Hospitalised for dengue. Visited him at the hospital',
+    ];
+
+    const displayConfigParticulars = [
         { key: 'born', label: 'Age', formatter: 'computeAge' },
         { key: 'born', label: 'Birth Date', formatter: 'formatDate' },
         {
@@ -47,13 +54,13 @@ function MemberDetails() {
         },
     ];
 
-    const keyToLabelSeqContact = [
+    const displayConfigContact = [
         { key: 'mobile', label: 'Mobile', formatter: null },
         { key: 'phone', label: 'Tel', formatter: null },
         { key: 'email', label: 'Email', formatter: null },
     ];
 
-    const keyToLabelSeqAddress = [
+    const displayConfigAddress = [
         { key: 'country', label: 'Country', formatter: 'formatCountryName' },
         { key: 'postal', label: 'Postal Code', formatter: null },
         { key: 'street', label: 'Block/Street', formatter: null },
@@ -66,55 +73,104 @@ function MemberDetails() {
     ];
 
     // const phoneToCall = info.mobile ? info.mobile : info.phone;
+    const [infoVisible, setInfoVisible] = useState(true);
+    const [editNotes, setEditNotes] = useState(false);
+    const handleShowRemarks = () => {
+        setInfoVisible(!infoVisible);
+    };
+    const handleEdit = () => {
+        setEditNotes(!editNotes);
+    };
+    const handleSave = () => {
+        setEditNotes(!editNotes);
+    };
 
     return (
         <Modal bgClass="bg-neutral-focus">
             <div className="card-body flex flex-row flex-wrap items-center justify-between gap-5">
                 <ProfileHeader width="w-max" name={info.name} />
             </div>
-            <div className="card-body rounded-xl bg-white text-base-content grid grid-cols-1 gap-10 ">
-                <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 ">
-                    <MemberDetailsSection
-                        title="Particulars"
-                        data={info}
-                        displaySeqMap={keyToLabelSeqGeneral}
-                    />
-                    <MemberDetailsSection
-                        title="Address"
-                        data={address}
-                        displaySeqMap={keyToLabelSeqAddress}
-                    />
-                    <MemberDetailsSection
-                        title="Contact"
-                        data={info}
-                        displaySeqMap={keyToLabelSeqContact}
-                    />
-                </div>
-                <div>
-                    <span className="card-title ">Remarks</span>
-                    <Divider />
-                    <div className="flex flex-col gap-1 pb-2 max-h-60 overflow-scroll overscroll-contain">
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Stays with his father, not yet a christian
-                        </div>
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Hospitalised for dengue.
-                        </div>
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Visited him at the hospital.
-                        </div>
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Visited him at the hospital.
-                        </div>
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Visited him at the hospital.
-                        </div>
-                        <div className="w-full shadow-md p-4 border-primary border-l-4">
-                            Visited him at the hospital.
-                        </div>
+            {infoVisible ? (
+                <div
+                    className={`card-body rounded-xl bg-base-100 text-base-content grid grid-cols-1 gap-10 `}
+                >
+                    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+                        <MemberDetailsSection
+                            title="Particulars"
+                            data={info}
+                            displaySeqMap={displayConfigParticulars}
+                        />
+                        <MemberDetailsSection
+                            title="Address"
+                            data={address}
+                            displaySeqMap={displayConfigAddress}
+                        />
+                        <MemberDetailsSection
+                            title="Contact"
+                            data={info}
+                            displaySeqMap={displayConfigContact}
+                        />
                     </div>
+                    <button
+                        type="button"
+                        label="Show Notes"
+                        className="btn neumorph btn-ghost bg-base-200 text-primary border border-base-300 border-opacity-20"
+                        onClick={handleShowRemarks}
+                    >
+                        Additional Notes
+                    </button>
                 </div>
-            </div>
+            ) : (
+                <div className="card-body rounded-xl bg-white text-base-content grid grid-cols-1">
+                    <div>
+                        <span className="card-title ">Notes</span>
+                        <Divider />
+                    </div>
+                    <form className="space-y-4">
+                        <MemberNotes notes={notes} editMode={editNotes} />
+                        <div className="flex flex-1 flex-row space-x-4 justify-end flex-grow">
+                            {editNotes ? (
+                                <div className="flex flex-1 flex-row space-x-4 justify-end">
+                                    <button
+                                        type="button"
+                                        label="discard changes"
+                                        className="btn btn-outline btn-neutral neumorph flex-grow md:flex-grow-0 md:w-20"
+                                        onClick={handleEdit}
+                                    >
+                                        Discard
+                                    </button>
+                                    <input
+                                        type="submit"
+                                        value="Save"
+                                        label="Save Remarks"
+                                        className="btn btn-accent neumorph flex-grow md:flex-grow-0"
+                                        onClick={handleSave}
+                                    />
+                                </div>
+                            ) : (
+                                <div className="flex flex-1 flex-row space-x-4 justify-end">
+                                    <button
+                                        type="button"
+                                        label="Show Info"
+                                        className="btn btn-success neumorph flex-grow md:flex-grow-0"
+                                        onClick={handleShowRemarks}
+                                    >
+                                        Back
+                                    </button>
+                                    <button
+                                        type="button"
+                                        label="Edit Remarks"
+                                        className="btn btn-warning neumorph flex-grow md:flex-grow-0"
+                                        onClick={handleEdit}
+                                    >
+                                        Edit
+                                    </button>
+                                </div>
+                            )}
+                        </div>
+                    </form>
+                </div>
+            )}
         </Modal>
     );
 }

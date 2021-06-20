@@ -13,7 +13,9 @@ const ProfileActions = ({ phoneToCall, postalCode }) => (
         >
             <button
                 type="button"
-                className="btn bg-gradient-to-br from-base-100 to-base-300 btn-ghost border-0 neumorph hover:text-base-content hover:transform hover:scale-110"
+                className=" btn btn-ghost 
+                            bg-gradient-to-br from-base-100 to-base-300 border-0 neumorph 
+                            hover:text-base-content hover:transform hover:scale-110"
                 target="_blank"
                 disabled={!postalCode}
                 rel="noreferrer"
@@ -24,7 +26,9 @@ const ProfileActions = ({ phoneToCall, postalCode }) => (
         <a href={`tel:${phoneToCall}`}>
             <button
                 type="button"
-                className="btn  bg-gradient-to-br from-base-100 to-base-300 btn-ghost border-0 neumorph hover:text-base-content hover:transform hover:scale-110 "
+                className="btn btn-ghost border-0 neumorph
+                            bg-gradient-to-br from-base-100 to-base-300 
+                            hover:text-base-content hover:transform hover:scale-110 "
                 disabled={phoneToCall === ''}
             >
                 <Icon id="TiPhoneOutline" />

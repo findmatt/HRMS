@@ -14,7 +14,7 @@ const MemberDetailsSection = ({ title, data, displaySeqMap }) => {
                     return '';
                 }
                 if (map.formatter) {
-                    const formatters = await import('../../../Lib/Formatters');
+                    const formatters = await import('../../../lib/Formatters');
                     if (
                         formatters[map.formatter] &&
                         typeof formatters[map.formatter] === 'function'

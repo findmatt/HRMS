@@ -1,10 +1,11 @@
 import React, { useContext } from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import backgroundImg from '../background.jpg';
 
 import firebaseAPIContext from '../context/AuthContext';
 import Navbar from '../components/Container/Navbar';
+
+import backgroundImg from '../background.jpg';
 
 function ProtectedRoute({ component: Component, navBar, ...rest }) {
     const authAPI = useContext(firebaseAPIContext);

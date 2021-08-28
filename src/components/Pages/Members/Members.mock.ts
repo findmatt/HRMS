@@ -9,39 +9,39 @@ const address: Address = {
     unit: '02-01',
 };
 const matthew: Member = {
-    address,
-    born: dob,
-    mobile: '91234567',
-    name: {
-        ethnic: '曾奕晞',
-        first: 'Matthew asdsadasdasdasdasdasdasdsadas Yi Shi',
-        last: 'Chan',
+    id: 'test1',
+    data: {
+        addressRef: null,
+        born: dob,
+        mobile: '91234567',
+        name: {
+            ethnic: '一个人',
+            first: 'Random',
+            last: 'Person',
+        },
+        nationality: 'SG',
+        phone: '',
+        email: 'test@gracechurchsg.com',
+        gender: 'M',
+        maritalStatus: 'S',
     },
-    nationality: 'SG',
-    phone: '',
-    email: 'test@gracechurchsg.com',
-    gender: 'M',
-    maritalStatus: 'S',
 };
 const yunsen: Member = {
-    address: {
-        country: '',
-        postal: '',
-        street: '',
-        building: '',
-        unit: '',
+    id: 'test2',
+    data: {
+        addressRef: null,
+        born: dob,
+        mobile: '',
+        name: {
+            ethnic: '云深',
+            first: 'Yunsen',
+            last: 'Tjung',
+        },
+        nationality: 'IND',
+        phone: '',
+        email: 'test2@gracechurchsg.com',
+        gender: 'M',
+        maritalStatus: 'S',
     },
-    born: dob,
-    mobile: '',
-    name: {
-        ethnic: '云深',
-        first: 'Yunsen',
-        last: 'Tjung',
-    },
-    nationality: 'IND',
-    phone: '',
-    email: 'test2@gracechurchsg.com',
-    gender: 'M',
-    maritalStatus: 'S',
 };
 export { dob, address, matthew, yunsen };

@@ -1,23 +1,26 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useState, FC } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
+import { members$ } from '../../../utilities/FirestoreAPI';
+import useObserveMembers from '../../../hooks/useMemberObservable';
+
 import Modal from '../../Reusable/Modal/Modal';
 import ProfileHeader from '../Members/ProfileCard/ProfileHeader';
-import Divider from '../../Reusable/Divider/Divider';
-
 import MemberDetailsSection from './MemberDetailsSection/MemberDetailsSection';
 import SectionTemplates from './MemberDetailsSection/MemberDetailsSectionTemplates';
 import MemberNotes from './MemberNotes/MemberNotes';
+import Divider from '../../Reusable/Divider/Divider';
 
-import { matthew } from '../Members/Members.mock';
 import notes from './MemberDetails.mock';
-import { Member } from '../Members/Members.spec';
 
 const MemberDetails: FC = () => {
-    // const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
+
+    const [member, address] = useObserveMembers(members$, id);
 
     const [infoVisible, setInfoVisible] = useState(true);
     const [editNotes, setEditNotes] = useState(false);
+
     const handleShowRemarks = () => {
         setInfoVisible(!infoVisible);
     };
@@ -28,29 +31,27 @@ const MemberDetails: FC = () => {
         setEditNotes(!editNotes);
     };
 
-    const info = matthew as Member;
-
     return (
         <Modal bgClass="bg-neutral-focus">
             <div className="card-body flex flex-row flex-wrap items-center justify-between gap-5">
-                <ProfileHeader width="w-max" name={info.name} />
+                <ProfileHeader width="w-max" name={member.data.name} />
             </div>
             {infoVisible ? (
                 <div className={`card-body rounded-xl bg-base-100 text-base-content grid grid-cols-1 gap-10 `}>
                     <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
                         <MemberDetailsSection
                             title="Particulars"
-                            data={info}
+                            data={member.data}
                             sectionTemplate={SectionTemplates.templateParticulars}
                         />
                         <MemberDetailsSection
                             title="Address"
-                            data={info.address}
+                            data={address}
                             sectionTemplate={SectionTemplates.templateAddress}
                         />
                         <MemberDetailsSection
                             title="Contact"
-                            data={info}
+                            data={member.data}
                             sectionTemplate={SectionTemplates.templateContact}
                         />
                     </div>

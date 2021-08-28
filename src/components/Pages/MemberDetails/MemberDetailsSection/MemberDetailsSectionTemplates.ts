@@ -1,7 +1,7 @@
-import { Address, Member } from '../../Members/Members.spec';
+import { Address, MemberData } from '../../Members/Members.spec';
 import { SectionTemplate } from '../MemberDetails.spec';
 
-const templateParticulars: SectionTemplate<Member> = [
+const templateParticulars: SectionTemplate<MemberData> = [
     { attributeName: 'born', label: 'Age', formatter: 'computeAge' },
     { attributeName: 'born', label: 'Birth Date', formatter: 'formatDate' },
     {
@@ -17,7 +17,7 @@ const templateParticulars: SectionTemplate<Member> = [
     },
 ];
 
-const templateContact: SectionTemplate<Member> = [
+const templateContact: SectionTemplate<MemberData> = [
     { attributeName: 'mobile', label: 'Mobile', formatter: null },
     { attributeName: 'phone', label: 'Tel', formatter: null },
     { attributeName: 'email', label: 'Email', formatter: null },

@@ -1,3 +1,5 @@
+import { FirestoreDocRef } from '../../../utilities/FirestoreAPI';
+
 type Address = {
     postal: string;
     country: string;
@@ -11,6 +13,11 @@ type Name = {
     last: string;
 };
 type Member = {
+    id: string;
+    data: MemberData;
+};
+
+type MemberData = {
     name: Name;
     born: Date;
     nationality: string;
@@ -19,7 +26,7 @@ type Member = {
     mobile: string;
     phone: string;
     email: string;
-    address: Address;
+    addressRef: FirestoreDocRef | null;
 };
 
-export type { Member, Address, Name };
+export type { Member, MemberData, Address, Name };

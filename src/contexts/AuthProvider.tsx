@@ -5,17 +5,17 @@ import { authService } from '../firebase';
 
 export type AuthUser = User | null;
 
-const FirebaseAuthContext = React.createContext<AuthUser>(null);
+const AuthContext = React.createContext<AuthUser>(null);
 
-const FirebaseAuthProvider: React.FC = ({ children }) => {
+const AuthProvider: React.FC = ({ children }) => {
     const [user, setUser] = React.useState<AuthUser>(null);
     React.useEffect(() => {
         const unsubscribe = authService.onAuthStateChanged(setUser);
         return unsubscribe;
-    }, []);
+    }, [user]);
 
-    return <FirebaseAuthContext.Provider value={user}>{children}</FirebaseAuthContext.Provider>;
+    return <AuthContext.Provider value={user}>{children}</AuthContext.Provider>;
 };
 
-export default FirebaseAuthProvider;
-export { FirebaseAuthContext };
+export default AuthProvider;
+export { AuthContext };

@@ -5,15 +5,17 @@ import { Location } from 'history';
 
 import './App.css';
 
-import FirebaseAuthProvider from './contexts/AuthContext';
+import AuthProvider from './contexts/AuthProvider';
 import ProtectedRoute from './routes/ProtectedRoute';
 import PublicRoute from './routes/PublicRoute';
 
 import Members from './components/Pages/Members/Members';
 import MemberDetails from './components/Pages/MemberDetails/MemberDetails';
+import { Member } from './components/Pages/Members/Members.spec';
 
 type LocationState = {
     background: Location;
+    member: Member;
 };
 
 const App: FC = () => {
@@ -22,16 +24,16 @@ const App: FC = () => {
     const background = state && state.background;
     return (
         <div className="wrapper">
-            <FirebaseAuthProvider>
+            <AuthProvider>
                 <Switch location={background || location}>
                     {/* temporary landing page untill use case requires dashboard */}
-                    <ProtectedRoute exact path="/" component={Members} navBar />
+                    <ProtectedRoute exact path="/members" component={Members} navBar />
                     <PublicRoute />
                 </Switch>
                 {background && (
                     <ProtectedRoute exact path="/MemberDetails/:id" component={MemberDetails} navBar={false} />
                 )}
-            </FirebaseAuthProvider>
+            </AuthProvider>
             <Toaster position="bottom-center" />
         </div>
     );

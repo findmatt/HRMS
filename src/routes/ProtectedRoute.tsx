@@ -2,18 +2,18 @@
 import React, { useContext, FC } from 'react';
 import { Redirect, Route, RouteProps } from 'react-router-dom';
 
-import { FirebaseAuthContext, AuthUser } from '../contexts/AuthContext';
+import { AuthContext, AuthUser } from '../contexts/AuthProvider';
 import Navbar from '../components/Container/Navbar';
 
-import backgroundImg from '../images/background.jpg';
+import backgroundImg from '../assets/background.jpg';
 
 type ProtectedRouteProps = {
     navBar: boolean;
-    component: any;
+    component: FC;
 } & RouteProps;
 
 const ProtectedRoute: FC<ProtectedRouteProps> = ({ component: Component, navBar, ...routeProps }) => {
-    const user: AuthUser = useContext(FirebaseAuthContext);
+    const user: AuthUser = useContext(AuthContext);
     return (
         <Route
             // eslint-disable-next-line react/jsx-props-no-spreading
@@ -32,7 +32,7 @@ const ProtectedRoute: FC<ProtectedRouteProps> = ({ component: Component, navBar,
                         </div>
                     </div>
                 ) : (
-                    <Redirect to="/login" />
+                    <Redirect to="/" />
                 )
             }
         />

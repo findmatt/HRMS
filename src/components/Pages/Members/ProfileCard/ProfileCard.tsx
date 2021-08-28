@@ -4,20 +4,25 @@ import ProfileActions from './ProfileActions';
 import ProfileHeader from './ProfileHeader';
 import { Member } from '../Members.spec';
 
-const ProfileCard: FC<{ info: Member }> = ({ info }) => {
+const ProfileCard: FC<{ member: Member }> = ({ member }) => {
     const location = useLocation();
-    const phoneToCall: Member['phone'] = info.mobile ? info.mobile : info.phone;
+
+    const { id, data } = member;
+    const memberDetails = JSON.stringify(member);
+    const phoneToCall = data.mobile ? data.mobile : data.phone;
+    const postalCode = data.addressRef ? data.addressRef.id.substring(0, 6) : '';
+
     return (
         <div className="card glass compact lg:w-80 sm:w-max place-self-center justify-center">
             <div className="card-body place-self-center m-2">
                 <div>
-                    <ProfileHeader name={info.name} width="w-60" />
+                    <ProfileHeader name={data.name} width="w-60" />
                     <div className="flex flex-shrink-0 items-center justify-left space-x-4 mt-4">
-                        <ProfileActions postalCode={info.address.postal} phoneToCall={phoneToCall} />
+                        <ProfileActions postalCode={postalCode} phoneToCall={phoneToCall} />
                         <Link
                             to={{
-                                pathname: '/MemberDetails/1',
-                                state: { background: location },
+                                pathname: `/MemberDetails/${id}`,
+                                state: { background: location, memberDetails },
                             }}
                         >
                             <button type="button" className="btn neumorph text-xl w-auto bg-neutral m-0">

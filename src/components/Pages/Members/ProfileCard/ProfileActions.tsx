@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 import Icon from '../../../Reusable/Icon/Icon';
-import { Member, Address } from '../Members.spec';
+import { MemberData, Address } from '../Members.spec';
 
 type Props = {
-    phoneToCall: Member['phone'];
+    phoneToCall: MemberData['phone'];
     postalCode: Address['postal'];
 };
 

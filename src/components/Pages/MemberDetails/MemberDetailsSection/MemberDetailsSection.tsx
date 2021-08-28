@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 
 import Formatters from '../../../../utilities/Formatters';
 import Divider from '../../../Reusable/Divider/Divider';
-import { Member, Address } from '../../Members/Members.spec';
+import { MemberData, Address } from '../../Members/Members.spec';
 import { SectionData, SectionTemplate, LineTemplate } from '../MemberDetails.spec';
 
 type Props<T> = {
@@ -11,7 +12,7 @@ type Props<T> = {
     data: SectionData<T>;
     sectionTemplate: SectionTemplate<T>;
 };
-const MemberDetailsSection = <T extends Member | Address>({
+const MemberDetailsSection = <T extends MemberData | Address>({
     title,
     data,
     sectionTemplate,
@@ -19,9 +20,6 @@ const MemberDetailsSection = <T extends Member | Address>({
     const section = sectionTemplate.map((lineTemplate: LineTemplate<T>) => {
         const dataVal: unknown = data[lineTemplate.attributeName];
         let outputString = dataVal as string;
-        if (!data[lineTemplate.attributeName] || outputString === '') {
-            return '';
-        }
 
         // apply formatter function if defined and exists
         if (lineTemplate.formatter) {
@@ -41,6 +39,7 @@ const MemberDetailsSection = <T extends Member | Address>({
             </tr>
         );
     });
+
     return (
         <div>
             <span className="card-title">{title}</span>

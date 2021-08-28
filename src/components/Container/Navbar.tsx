@@ -11,17 +11,17 @@ const Navbar: FC = () => {
                 {
                     icon: 'BiLogOut',
                     text: 'Dashboard',
-                    linkto: '/',
+                    linkto: '/members',
                 },
                 {
                     icon: 'BiNews',
                     text: 'News',
-                    linkto: '/',
+                    linkto: '/members',
                 },
                 {
                     icon: 'AiFillAlert',
                     text: 'Notifications',
-                    linkto: '/',
+                    linkto: '/members',
                 },
             ],
         },

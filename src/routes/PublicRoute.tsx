@@ -2,14 +2,14 @@ import React, { useContext, FC } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 import Login from '../components/Pages/Login/Login';
-import { FirebaseAuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../contexts/AuthProvider';
 
 const PublicRoute: FC = () => {
-    const user = useContext(FirebaseAuthContext);
+    const user = useContext(AuthContext);
     if (user) {
-        return <Redirect to="/" />;
+        return <Redirect to="/members" />;
     }
-    return <Route exact path="/login" component={Login} />;
+    return <Route exact path="/" component={Login} />;
 };
 
 export default PublicRoute;

@@ -3,7 +3,7 @@ import React from 'react';
 import { v4 as uuid } from 'uuid';
 
 import Formatters from '../../../../../utilities/Formatters';
-import Divider from '../../../../Reusable/Divider/Divider';
+import Divider from '../../../../Reusable/Divider';
 import { MemberData, Address } from '../../types';
 import { SectionData, SectionTemplate, LineTemplate } from '../types';
 

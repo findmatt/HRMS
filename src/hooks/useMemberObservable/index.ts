@@ -12,7 +12,6 @@ function useObserveMemberDetails(members$: Observable<Member[]>, id: string): [M
     const [addressRef, setAddressRef] = useState<string>('');
 
     useEffect(() => {
-        // let addressUnsub: undefined | (() => void);
         const subscription = members$.subscribe((res: Member[]) => {
             const matchedMember = res.find((element) => element.id === id) as Member;
             if (matchedMember) {

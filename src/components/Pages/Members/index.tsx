@@ -2,7 +2,7 @@
 import React, { FC, useState, useEffect, SyntheticEvent } from 'react';
 import Fuse from 'fuse.js';
 
-import Icon from '../../Reusable/Icon/Icon';
+import Icon from '../../Reusable/Icon';
 import ProfileCard from './ProfileCard';
 
 import observeMembers from '../../../utilities/FirestoreAPI';
@@ -21,6 +21,7 @@ const Members: FC = () => {
 
     useEffect(() => {
         const fuse = new Fuse(members, {
+            threshold: 0.5,
             keys: ['data.name.ethnic', 'data.name.first', 'data.name.last'],
         });
         const searchResult = fuse.search(filter);
@@ -29,6 +30,7 @@ const Members: FC = () => {
 
     const onSearch = (evt: SyntheticEvent) => {
         evt.preventDefault();
+        (document.activeElement as HTMLElement).blur();
         const target = evt.target as typeof evt.target & {
             filter: { value: string };
         };

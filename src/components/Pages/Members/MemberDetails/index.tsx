@@ -4,12 +4,12 @@ import { useParams } from 'react-router-dom';
 import { members$ } from '../../../../utilities/FirestoreAPI';
 import useObserveMembers from '../../../../hooks/useMemberObservable';
 
-import Modal from '../../../Reusable/Modal/Modal';
+import Modal from '../../../Reusable/Modal';
 import ProfileHeader from '../ProfileCard/ProfileHeader';
 import MemberDetailsSection from './MemberDetailsSection';
 import SectionTemplates from './MemberDetailsSection/types';
 import MemberNotes from './MemberNotes';
-import Divider from '../../../Reusable/Divider/Divider';
+import Divider from '../../../Reusable/Divider';
 
 import notes from './mock';
 

@@ -1,5 +1,5 @@
 import React, { FC, MouseEvent } from 'react';
-import Icon from '../../../../Reusable/Icon/Icon';
+import Icon from '../../../../Reusable/Icon';
 import { MemberData, Address } from '../../types';
 
 type Props = {

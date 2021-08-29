@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef, FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import Icon from '../Icon/Icon';
+import Icon from '../Icon';
 
 export type MenuItem = {
     text: string;
@@ -45,11 +45,7 @@ const Dropdown: FC<Props> = ({ menu, toggleIcon }) => {
     const mapMenuGroupItems = (menuItems: MenuItem[]) =>
         menuItems.map((item: MenuItem) => (
             <li key={item.text} className="px-2 mx-2">
-                <Link
-                    to={item.linkto}
-                    onClick={item.handleClick}
-                    className="flex justify-left "
-                >
+                <Link to={item.linkto} onClick={item.handleClick} className="flex justify-left ">
                     <Icon id={item.icon} textSize="text-xl" />
                     <div className="px-2">{item.text}</div>
                 </Link>
@@ -68,11 +64,7 @@ const Dropdown: FC<Props> = ({ menu, toggleIcon }) => {
 
     return (
         <div ref={dropdownRef} className="relative z-20">
-            <button
-                type="button"
-                className="btn btn-ghost rounded-btn text-neutral-content"
-                onClick={handleClick}
-            >
+            <button type="button" className="btn btn-ghost rounded-btn text-neutral-content" onClick={handleClick}>
                 <Icon id={toggleIcon} textSize="text-xl" />
             </button>
             {visible && (

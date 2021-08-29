@@ -1,4 +1,4 @@
-import Formatters from '../../../utilities/Formatters';
+import Formatters from '../../../../utilities/Formatters';
 
 export type LineTemplate<T> = {
     attributeName: keyof T;

@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { AiOutlinePlus } from 'react-icons/ai';
 import TextareaAutosize from 'react-textarea-autosize';
-import { Notes } from '../MemberDetails.spec';
+import { Notes } from '../types';
 
 type Props = {
     notes: Notes;
@@ -23,10 +23,7 @@ const MemberNotes: FC<Props> = ({ notes, editMode }) => {
                         disabled={!editMode}
                     />
                     {editMode && (
-                        <button
-                            type="button"
-                            className="btn btn-error btn-circle btn-sm "
-                        >
+                        <button type="button" className="btn btn-error btn-circle btn-sm ">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 fill="none"
@@ -45,10 +42,7 @@ const MemberNotes: FC<Props> = ({ notes, editMode }) => {
                 </div>
             ))}
             {editMode && (
-                <button
-                    type="button"
-                    className="btn btn-neutral btn-xs text-2xl rounded-t-none place-self-center"
-                >
+                <button type="button" className="btn btn-neutral btn-xs text-2xl rounded-t-none place-self-center">
                     <AiOutlinePlus />
                 </button>
             )}

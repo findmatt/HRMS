@@ -9,9 +9,9 @@ import AuthProvider from './contexts/AuthProvider';
 import ProtectedRoute from './routes/ProtectedRoute';
 import PublicRoute from './routes/PublicRoute';
 
-import Members from './components/Pages/Members/Members';
-import MemberDetails from './components/Pages/MemberDetails/MemberDetails';
-import { Member } from './components/Pages/Members/Members.spec';
+import Members from './components/Pages/Members';
+import MemberDetails from './components/Pages/Members/MemberDetails';
+import { Member } from './components/Pages/Members/types';
 
 type LocationState = {
     background: Location;

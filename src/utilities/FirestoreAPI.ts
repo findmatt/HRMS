@@ -2,7 +2,7 @@ import firebase from 'firebase';
 import { BehaviorSubject } from 'rxjs';
 import toast from 'react-hot-toast';
 
-import { Address, Member } from '../components/Pages/Members/Members.spec';
+import { Address, Member } from '../components/Pages/Members/types';
 import { dbService } from '../firebase';
 
 export type FirestoreDocRef = firebase.firestore.DocumentReference;
@@ -10,27 +10,27 @@ export type FirestoreDocData = firebase.firestore.DocumentData;
 
 export type Unsubscribe = () => void;
 
-const mapMembers = (id: string, data: firebase.firestore.DocumentData): Member => ({
+const mapMembers = (id: string, data: firebase.firestore.DocumentData | undefined): Member => ({
     id,
     data: {
-        name: data.name,
-        born: data.born.toDate(),
-        nationality: data.nationality,
-        gender: data.gender,
-        maritalStatus: data.maritalStatus,
-        mobile: data.mobile,
-        phone: data.phone,
-        email: data.email,
-        addressRef: data.address,
+        name: data ? data.name : '',
+        born: data ? data.born?.toDate() : new Date(),
+        nationality: data ? data.nationality : '',
+        gender: data ? data.gender : '',
+        maritalStatus: data ? data.maritalStatus : '',
+        mobile: data ? data.mobile : '',
+        phone: data ? data.phone : '',
+        email: data ? data.email : '',
+        addressRef: data ? data.address : '',
     },
 });
 
-const mapAddress = (data: firebase.firestore.DocumentData): Address => ({
-    postal: data.postal,
-    country: data.country,
-    street: data.street,
-    building: data.building,
-    unit: data.unit,
+const mapAddress = (data: firebase.firestore.DocumentData | undefined): Address => ({
+    postal: data ? data.postal : '',
+    country: data ? data.country : '',
+    street: data ? data.street : '',
+    building: data ? data.building : '',
+    unit: data ? data.unit : '',
 });
 
 const members$ = new BehaviorSubject<Member[]>([]);

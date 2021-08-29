@@ -1,4 +1,4 @@
-import { Notes } from './MemberDetails.spec';
+import { Notes } from './types';
 
 const notes: Notes = [
     'Stays with his father, not yet a christian',

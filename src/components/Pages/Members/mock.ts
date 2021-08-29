@@ -1,4 +1,4 @@
-import { Member, Address } from './Members.spec';
+import { Member, Address } from './types';
 
 const dob = new Date(1989, 9, 10);
 const address: Address = {

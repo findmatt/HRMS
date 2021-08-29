@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import AuthAPI from '../../utilities/AuthAPI';
+import AuthAPI from '../../../utilities/AuthAPI';
 
-import Dropdown, { MenuGroup } from '../Reusable/Dropdown/Dropdown';
+import Dropdown, { MenuGroup } from '../../Reusable/Dropdown/Dropdown';
 
 const Navbar: FC = () => {
     const menu: MenuGroup[] = [

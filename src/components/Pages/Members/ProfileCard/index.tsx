@@ -2,14 +2,14 @@ import React, { FC } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import ProfileActions from './ProfileActions';
 import ProfileHeader from './ProfileHeader';
-import { Member } from '../Members.spec';
+import { Member } from '../types';
 
 const ProfileCard: FC<{ member: Member }> = ({ member }) => {
     const location = useLocation();
 
     const { id, data } = member;
     const memberDetails = JSON.stringify(member);
-    const phoneToCall = data.mobile ? data.mobile : data.phone;
+    const phoneToCall = data.mobile || data.phone || '';
     const postalCode = data.addressRef ? data.addressRef.id.substring(0, 6) : '';
 
     return (

@@ -1,5 +1,5 @@
-import { Address, MemberData } from '../../Members/Members.spec';
-import { SectionTemplate } from '../MemberDetails.spec';
+import { Address, MemberData } from '../../types';
+import { SectionTemplate } from '../types';
 
 const templateParticulars: SectionTemplate<MemberData> = [
     { attributeName: 'born', label: 'Age', formatter: 'computeAge' },

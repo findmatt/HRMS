@@ -2,10 +2,10 @@
 import React from 'react';
 import { v4 as uuid } from 'uuid';
 
-import Formatters from '../../../../utilities/Formatters';
-import Divider from '../../../Reusable/Divider/Divider';
-import { MemberData, Address } from '../../Members/Members.spec';
-import { SectionData, SectionTemplate, LineTemplate } from '../MemberDetails.spec';
+import Formatters from '../../../../../utilities/Formatters';
+import Divider from '../../../../Reusable/Divider/Divider';
+import { MemberData, Address } from '../../types';
+import { SectionData, SectionTemplate, LineTemplate } from '../types';
 
 type Props<T> = {
     title: string;

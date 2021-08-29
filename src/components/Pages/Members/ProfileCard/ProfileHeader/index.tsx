@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Name } from '../Members.spec';
+import { Name } from '../../types';
 
 type Props = {
     name: Name;
@@ -14,9 +14,9 @@ const ProfileHeader: FC<Props> = ({ name, width }) => (
             src="https://htmlstream.com/preview/unify-v2.6.3/assets/img-temp/400x450/img5.jpg"
         />
         <div className="break-all">
-            <span className="text-lg font-bold">{name.ethnic}</span>
+            <span className="text-lg font-bold">{name?.ethnic || ''}</span>
             <br />
-            <span>{`${name.first} ${name.last}`}</span>
+            <span>{`${name?.first || ''} ${name?.last || ''}`}</span>
         </div>
     </div>
 );

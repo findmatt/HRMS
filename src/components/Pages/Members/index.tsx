@@ -1,11 +1,11 @@
 import React, { FC, useState, useEffect } from 'react';
 
 import Icon from '../../Reusable/Icon/Icon';
-import ProfileCard from './ProfileCard/ProfileCard';
+import ProfileCard from './ProfileCard';
 
 import observeMembers from '../../../utilities/FirestoreAPI';
 
-import { Member } from './Members.spec';
+import { Member } from './types';
 
 const Members: FC = () => {
     const [members, setMembers] = useState<Member[]>([]);

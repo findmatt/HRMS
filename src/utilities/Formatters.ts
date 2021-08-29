@@ -13,15 +13,44 @@ const formatCountryName: formatter = (countryCode) => countries.getName(countryC
 
 const formatNationality: formatter = (countryCode: string) => nationalities.getName(countryCode, 'en');
 
-const formatGender: formatter = (gender) => (gender === 'F' ? 'Female' : 'Male');
+const formatGender: formatter = (gender: string) => {
+    if (gender) {
+        switch (gender) {
+            case 'F':
+                return 'Female';
+            case 'M':
+                return 'Male';
+            default:
+                return gender;
+        }
+    }
+    return '';
+};
 
-const formatMaritalStatus: formatter = (maritalStatus) => (maritalStatus === 'S' ? 'Single' : 'Married');
+const formatMaritalStatus: formatter = (maritalStatus) => {
+    if (maritalStatus) {
+        switch (maritalStatus) {
+            case 'S':
+                return 'Single';
+            case 'M':
+                return 'Divorce';
+            default:
+                return maritalStatus;
+        }
+    }
+    return '';
+};
 
-const formatDate: formatter = (date) => date.toLocaleDateString('en-SG');
+const formatDate: formatter = (date) => (date ? date.toLocaleDateString('en-SG') : '');
 
-const computeAge: formatter = (dob) => differenceInCalendarYears(new Date(), dob).toString();
+const computeAge: formatter = (dob): string => {
+    if (dob) {
+        return differenceInCalendarYears(new Date(), dob).toString();
+    }
+    return '';
+};
 
-const addressUnit: formatter = (value) => `#${value}`;
+const addressUnit: formatter = (value) => (value ? `#${value}` : '');
 
 export default {
     addressUnit,

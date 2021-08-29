@@ -1,17 +1,17 @@
 import React, { useState, FC } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { members$ } from '../../../utilities/FirestoreAPI';
-import useObserveMembers from '../../../hooks/useMemberObservable';
+import { members$ } from '../../../../utilities/FirestoreAPI';
+import useObserveMembers from '../../../../hooks/useMemberObservable';
 
-import Modal from '../../Reusable/Modal/Modal';
-import ProfileHeader from '../Members/ProfileCard/ProfileHeader';
-import MemberDetailsSection from './MemberDetailsSection/MemberDetailsSection';
-import SectionTemplates from './MemberDetailsSection/MemberDetailsSectionTemplates';
-import MemberNotes from './MemberNotes/MemberNotes';
-import Divider from '../../Reusable/Divider/Divider';
+import Modal from '../../../Reusable/Modal/Modal';
+import ProfileHeader from '../ProfileCard/ProfileHeader';
+import MemberDetailsSection from './MemberDetailsSection';
+import SectionTemplates from './MemberDetailsSection/types';
+import MemberNotes from './MemberNotes';
+import Divider from '../../../Reusable/Divider/Divider';
 
-import notes from './MemberDetails.mock';
+import notes from './mock';
 
 const MemberDetails: FC = () => {
     const { id } = useParams<{ id: string }>();

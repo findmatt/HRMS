@@ -9,12 +9,14 @@ type Props = {
 
 const ProfileActions: FC<Props> = ({ phoneToCall, postalCode }) => {
     const openMaps = (evt: MouseEvent) => {
+        (document.activeElement as HTMLElement).blur();
         evt.stopPropagation();
         window.open(`http://maps.google.com/?saddr=Current+Location&daddr=Singapore+${postalCode}`);
     };
     const openPhone = (evt: MouseEvent) => {
+        (document.activeElement as HTMLElement).blur();
         evt.stopPropagation();
-        window.open(`tel:${phoneToCall}`);
+        window.open(`tel:${phoneToCall}`, '_self');
     };
     return (
         <div className="flex flex-row items-center justify-center space-x-4 text-primary ">

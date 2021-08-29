@@ -7,6 +7,7 @@ const Login: FC = () => {
     const [password, setPassword] = useState('');
 
     const handleLogin = (evt: React.FormEvent) => {
+        (document.activeElement as HTMLElement).blur();
         evt.preventDefault();
         AuthAPI.login(email, password);
     };

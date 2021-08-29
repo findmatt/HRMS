@@ -34,7 +34,15 @@ const App: FC = () => {
                     <ProtectedRoute exact path="/MemberDetails/:id" component={MemberDetails} navBar={false} />
                 )}
             </AuthProvider>
-            <Toaster position="bottom-center" />
+            <Toaster
+                position="bottom-center"
+                containerStyle={{
+                    top: 20,
+                    left: 20,
+                    bottom: '15%',
+                    right: 20,
+                }}
+            />
         </div>
     );
 };
